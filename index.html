@@ -169,13 +169,43 @@
         ];
 
         var cities = {
-            "Delhi": [28.6139, 77.2090],
-            "Mumbai": [19.0760, 72.8777],
-            "Hyderabad": [17.3850, 78.4867],
-            "Goa": [15.2993, 74.1240],
-            "Spiti Valley": [32.2461, 78.0177],
-            "Munnar": [10.0889, 77.0595],
-            "Wayanad": [11.6854, 76.1320]
+            "Delhi": {'cordinates' : [28.6139, 77.2090], 'images' : [
+            "https://images.unsplash.com/photo-1739382445469-9b86a88a2fb2",
+            "https://images.unsplash.com/photo-1739382445469-9b86a88a2fb2",
+            "https://images.unsplash.com/photo-1739382445469-9b86a88a2fb2"
+        ]},
+            "Mumbai": {'cordinates' : [19.0760, 72.8777],'images' : [
+            "https://images.unsplash.com/photo-1739382445469-9b86a88a2fb2",
+            "https://images.unsplash.com/photo-1739382445469-9b86a88a2fb2",
+            "https://images.unsplash.com/photo-1739382445469-9b86a88a2fb2"
+        ]},
+            "Hyderabad": { 'cordinates' :  [17.3850, 78.4867],'images' : [
+          
+            "/album_images/IMG_4704.JPG",
+            "/album_images/93e2a150-ffd0-42f2-9169-93af7f0f8eee.JPG",
+            "/album_images/bd2bf2b4-1bdc-4982-9604-dc6a4ac6a159.JPG",
+            "/album_images/0aa5811d-ca0e-4377-a485-9327dae731c6.JPG",
+        ]},
+            "Goa": { 'cordinates' :  [15.2993, 74.1240],'images' : [
+            "https://images.unsplash.com/photo-1739382445469-9b86a88a2fb2",
+            "https://images.unsplash.com/photo-1739382445469-9b86a88a2fb2",
+            "https://images.unsplash.com/photo-1739382445469-9b86a88a2fb2"
+        ]},
+            "Spiti Valley": {'cordinates' : [ 32.2461, 78.0177],'images' : [
+            "https://images.unsplash.com/photo-1739382445469-9b86a88a2fb2",
+            "https://images.unsplash.com/photo-1739382445469-9b86a88a2fb2",
+            "https://images.unsplash.com/photo-1739382445469-9b86a88a2fb2"
+        ]},
+            "Munnar": {'cordinates' : [10.0889, 77.0595],'images' : [
+            "https://images.unsplash.com/photo-1739382445469-9b86a88a2fb2",
+            "https://images.unsplash.com/photo-1739382445469-9b86a88a2fb2",
+            "https://images.unsplash.com/photo-1739382445469-9b86a88a2fb2"
+        ]},
+            "Wayanad": {'cordinates' : [11.6854, 76.1320],'images' : [
+            "https://images.unsplash.com/photo-1739382445469-9b86a88a2fb2",
+            "https://images.unsplash.com/photo-1739382445469-9b86a88a2fb2",
+            "https://images.unsplash.com/photo-1739382445469-9b86a88a2fb2"
+        ]}
         };
 
         function showModal(city) {
@@ -184,7 +214,7 @@
             var carouselIndicators = document.getElementById("carousel-indicators");
             carouselInner.innerHTML = "";
             carouselIndicators.innerHTML = "";
-            testImages.forEach((img, index) => {
+            cities[city]['images'].forEach((img, index) => {
                 carouselInner.innerHTML += `<div class="carousel-item ${index === 0 ? 'active' : ''}"><img src="${img}" class="d-block w-100"></div>`;
                 carouselIndicators.innerHTML += `<button type="button" data-bs-target="#carouselExample" data-bs-slide-to="${index}" class="${index === 0 ? 'active' : ''}"></button>`;
             });
@@ -192,7 +222,7 @@
         }
 
         for (let city in cities) {
-            L.marker(cities[city]).addTo(map).bindPopup(`<b>${city}</b><br><button class="btn btn-primary btn-sm" onclick="showModal('${city}')">View Images</button>`);
+            L.marker(cities[city]['cordinates']).addTo(map).bindPopup(`<b>${city}</b><br><button class="btn btn-primary btn-sm" onclick="showModal('${city}')">View Images</button>`);
         }
 
 
